@@ -4,11 +4,8 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report
 import matplotlib.pyplot as plt
 
-# ----------------------------------------------------------------
-# Load synthetic dataset (simulating Medic Senegal exports)
-# ----------------------------------------------------------------
-
-df = pd.read_csv("data/synthetic_medic_senegal.csv")
+# Load synthetic dataset (simulating med.ai Senegal exports)
+df = pd.read_csv("data/synthetic_medai_senegal.csv")
 
 X = df.drop("risk_label", axis=1)
 y = df["risk_label"]
@@ -20,15 +17,9 @@ X_train, X_test, y_train, y_test = train_test_split(
 model = RandomForestClassifier(n_estimators=200, random_state=42)
 model.fit(X_train, y_train)
 
-# ----------------------------------------------------------------
-# Evaluation
-# ----------------------------------------------------------------
 print("\nModel Performance:\n")
 print(classification_report(y_test, y_pred := model.predict(X_test)))
 
-# ----------------------------------------------------------------
-# Feature importance plot
-# ----------------------------------------------------------------
 plt.figure(figsize=(8, 5))
 plt.bar(X.columns, model.feature_importances_)
 plt.title("Feature Importance (Random Forest)")
@@ -38,9 +29,6 @@ plt.savefig("feature_importance.png")
 
 print("Feature importance plot saved as feature_importance.png")
 
-# ----------------------------------------------------------------
-# Example inference
-# ----------------------------------------------------------------
 sample = X_test.iloc[0:1]
 prediction = model.predict(sample)[0]
 print(f"\nSample Patient Prediction: {prediction}")
