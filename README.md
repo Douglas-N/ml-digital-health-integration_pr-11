@@ -1,64 +1,65 @@
-# 🌍 ML-Driven Digital Health Tools for Off-Site Oncology Care Integration  
-### *Using Machine Learning to Improve Scalable, Accessible, and Efficient Oncology Care in LMIC Settings*
+# ML-Driven Digital Health Tools for Off-Site Oncology Care Integration  
+### Using Machine Learning to Improve Scalable, Accessible, and Efficient Oncology Care in LMIC Settings
 
-This repository contains a **machine-learning prototype** designed to demonstrate how digital health data from **off-site care centers in Senegal** (collected through the *med.ai* platform) can be used to improve oncology care coordination, early detection of deterioration, and resource allocation.
+This repository contains a machine-learning prototype demonstrating how digital health data from off-site care centers in Senegal (collected through the **med.ai** platform) can support oncology care coordination, early detection of patient deterioration, and more efficient referral workflows.
 
-The prototype is aligned with the broader digital health transformation efforts supported by:
+The prototype aligns with broader digital health transformation efforts supported by:
 
-- **med.ai** → digital health toolkit for community and off-site care  
-- **RKI (Robert Koch Institute)** → methodological analysis and redesign support  
-- **p53-react Initiative** → global health implementation program (where this work is embedded)  
-- **Planned AWS deployment** → scalable, cloud-based inference architecture  
+- **med.ai** – digital health toolkit for community and off-site care  
+- **RKI (Robert Koch Institute)** – methodological analysis and redesign support  
+- **p53-react Initiative** – implementation program where this work is embedded  
+- Planned **AWS deployment** – cloud-based inference infrastructure  
 
-This project serves as a **portfolio-ready demonstration** of how ML can support oncology care delivery in resource-limited settings.
+This project serves as a demonstration of how ML can support oncology care delivery in resource-limited settings.
 
 ---
 
-# 🩺 1. Problem Overview
+## 1. Problem Overview
 
-Off-site oncology care in LMIC contexts faces major challenges:
+Off-site oncology care in LMIC contexts faces significant challenges:
 
 - Long patient travel distances  
 - Overloaded central hospitals  
 - Limited oncology specialists  
 - Fragmented reporting from remote clinics  
-- Late detection of deterioration  
+- Delayed detection of clinical deterioration  
 
-Digital health platforms like **med.ai** collect patient data at off-site facilities, but **lack automated analytics** to:
+Digital health platforms like **med.ai** improve data collection but currently lack automated analytics to:
 
-- Prioritize high‑risk patients  
+- Identify high-risk patients  
 - Detect deterioration early  
 - Trigger clinician alerts  
-- Improve referral patterns  
+- Improve referral workflows  
 
-This prototype demonstrates how a **lightweight ML model** can support these workflows.
+This project demonstrates how a lightweight ML model can support these workflows.
 
 ---
 
-# 🤖 2. ML Solution Summary
+## 2. Machine Learning Solution Summary
 
-A **Random Forest Classifier** predicts:
+A **Random Forest Classifier** predicts the probability of a patient being at **high risk of clinical deterioration**.
 
-### **“Is this patient at risk of clinical deterioration?”**  
-(0 = low risk, 1 = high risk)
+**Prediction target**  
+- 0 = Low-risk patient  
+- 1 = High-risk patient  
 
-### Inputs used
-- Symptom severity  
-- Time since last visit  
+**Features included**  
+- Symptom severity score  
+- Days since last clinical visit  
 - Treatment adherence  
-- Side‑effect severity  
+- Side-effect severity  
 - Digital reporting activity (from med.ai logs)
 
-### Capabilities
-✔ Data preprocessing  
-✔ ML model training  
-✔ Inference demo  
-✔ Feature importance visualization  
-✔ AWS-ready workflow  
+**Pipeline capabilities**  
+- Data preprocessing  
+- Model training and validation  
+- Feature importance visualization  
+- Inference on sample patient data  
+- AWS-ready structure for deployment  
 
 ---
 
-# 🗂️ 3. Repository Structure
+## 3. Repository Structure
 
 ```
 ├── README.md
@@ -71,82 +72,88 @@ A **Random Forest Classifier** predicts:
 
 ---
 
-# 🧠 4. Methods
+## 4. Methods
 
-### Model
-- **Random Forest Classifier (scikit-learn)**  
-Chosen for simplicity, robustness, and interpretability.
+### Model  
+Random Forest Classifier (scikit-learn).  
+Selected due to robustness, interpretability, and suitability for small, noisy datasets.
 
-### Metrics
+### Evaluation Metrics  
 - Precision  
 - Recall  
 - F1-score  
 - Confusion matrix  
 
-### Why useful for Oncology
+### Relevance for Oncology Care  
 - Supports triage  
-- Detects deteriorating patients earlier  
-- Reduces central hospital load  
-- Supports follow-up scheduling  
+- Enables earlier identification of deterioration  
+- Reduces pressure on centralized oncology hospitals  
+- Facilitates follow-up and care continuity  
 
 ---
 
-# ☁️ 5. AWS Deployment Vision
+## 5. AWS Deployment Vision
 
 ```
- med.ai App (Senegal)
-          │
-          ▼
-     S3 Data Lake
-          │
-          ▼
-  AWS Lambda Inference
-          │
-          ▼
- RandomForest ML Model
-          │
-          ▼
-   API Gateway → clinician dashboard
+med.ai App (Senegal)
+        │
+        ▼
+S3 Data Lake
+        │
+        ▼
+AWS Lambda Inference
+        │
+        ▼
+RandomForest ML Model
+        │
+        ▼
+API Gateway → Clinician Dashboard
 ```
+
+This architecture supports real-time inference and scalable deployment for global health applications.
 
 ---
 
-# ▶️ 6. Running the Project
+## 6. Running the Project
 
-Install:
+Install dependencies:
+
 ```bash
 pip install -r requirements.txt
 ```
 
-Run:
+Run model training and evaluation:
+
 ```bash
 python main.py
 ```
 
-Outputs:
-- classification report  
-- feature importance plot  
-- sample prediction  
+Outputs include:
+
+- Model performance metrics (printed to console)  
+- Feature importance plot (saved as `feature_importance.png`)  
+- Example prediction for a single patient sample  
 
 ---
 
-# 🔮 7. Future Work
+## 7. Future Work
 
-- Real med.ai data ingestion  
-- Survival models (Cox, Weibull)  
-- SHAP explainability  
-- Sagemaker training pipelines  
-- Model monitoring  
-- Triage integration for LMIC oncology programs  
+- Integration with real med.ai datasets  
+- Time-series models for symptom trajectory forecasting  
+- Survival analysis models (CoxPH, Weibull)  
+- Explainability via SHAP  
+- AWS Sagemaker training pipelines  
+- Model monitoring and retraining  
+- Integration with digital triage tools for LMIC oncology programs  
 
 ---
 
-# 📝 License
+## License  
 MIT License
 
 ---
 
-# ✨ Author
+## Author  
 **Douglas Norberto**  
 Digital Health • Data Science • Oncology Analytics  
 Berlin, Germany  
